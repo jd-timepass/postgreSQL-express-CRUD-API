@@ -1,4 +1,4 @@
-import { createUserService, deleteUserService, getAllUsersService, updateUserService } from "../models/userModel.js";
+import { createUserService, deleteUserService, getAllUsersService, getUserByIdService, updateUserService } from "../models/userModel.js";
 
 // Standardized response function
 const handleResponse = (res, status, message, data = null) => {
@@ -8,6 +8,7 @@ const handleResponse = (res, status, message, data = null) => {
         data,
     });
 };
+
 
 export const createUser = async (req, res, next) => {
     const { name, email } = req.body;
@@ -35,7 +36,7 @@ export const getAllUsers = async (req, res, next) => {
 export const getUserById = async (req, res, next) => {
 
     try {
-        const user = await getUserById(req.params.id);
+        const user = await getUserByIdService(req.params.id);
 
         if (!user) return handleResponse(res, 404, "User not found...");
 
