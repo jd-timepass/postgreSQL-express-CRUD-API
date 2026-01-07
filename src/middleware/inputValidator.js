@@ -13,6 +13,7 @@ const validateUser = (req, res, next) => {
             status: 400,
             message: error.details[0].message,
         });
+        next();
 };
 
 export default validateUser;
