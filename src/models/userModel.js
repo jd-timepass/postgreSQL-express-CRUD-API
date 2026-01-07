@@ -22,6 +22,6 @@ export const deleteUserService = async (id) => {
 }
 
 export const updateUserService = async (id, name, email) => {
-    const result = await pool.query("UPDATE users SET name=$1, email=$2, WHERE  id=$3 RETURNING *", [name, email, id]);
+    const result = await pool.query("UPDATE users SET name=$1, email=$2 WHERE  id=$3 RETURNING *", [name, email, id]);
     return result.rows[0];
 }
